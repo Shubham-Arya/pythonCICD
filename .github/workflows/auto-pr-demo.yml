@@ -1,0 +1,26 @@
+name: demo to create automatic pull request
+
+
+on:
+  push:
+    branches: [ "main" ]
+  
+  jobs:
+  updateAuthor:
+  runs-on: ubuntu-latest
+
+    steps:
+     
+      - name: checking out code
+        uses: actions/checkout@v3
+    
+    - name: extract git commit data
+      uses: pythonCICD/git-commit-data-action@v1.x
+
+      - name: raise pull request
+        uses: Shubham-Arya/create-pull-request@v3 
+        with:
+        branch: "auto-pr-branch"
+        base: main
+        title: "demo for auto pr"
+        committer: ${{env.GIT_COMMIT_AUTHOR_NAME}} < ${{env.GIT_COMMIT_AUTHOR_EMAIL}}  
