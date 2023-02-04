@@ -1,0 +1,16 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: 
+      name: production-environment
+      url: /media/shubham-cg/CCCE9CE6CE9CC9DA/1/shubham
+    steps:
+      - name: deploy
+        # ...deployment-specific steps
